@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_overview"
+            android:icon="@mipmap/nav_home"
+            android:title="@string/nav_drawer_overview" />
+        <item android:id="@+id/nav_transaction"
+            android:icon="@mipmap/nav_transaction"
+            android:title="@string/nav_drawer_transaction" />
+        <item android:id="@+id/nav_employees"
+            android:icon="@mipmap/nav_employee"
+            android:title="@string/nav_drawer_employees" />
+        <item android:id="@+id/nav_social"
+            android:icon="@mipmap/nav_social"
+            android:title="@string/nav_drawer_social" />
+        <item android:id="@+id/nav_inventory"
+            android:icon="@mipmap/nav_inventory"
+            android:title="@string/nav_drawer_inventory" />
+    </group>
+
+</menu>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="nav_drawer_title">Money 20/20 Hackathon</string>
+    <string name="nav_drawer_subtitle">Welcome!</string>
+    <string name="app_name">Dody</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="nav_drawer_overview">Overview</string>
+    <string name="nav_drawer_employees">Employees</string>
+    <string name="nav_drawer_inventory">Inventory</string>
+    <string name="nav_drawer_social">Social</string>
+    <string name="nav_drawer_transaction">Transactions</string>
+</resources>
