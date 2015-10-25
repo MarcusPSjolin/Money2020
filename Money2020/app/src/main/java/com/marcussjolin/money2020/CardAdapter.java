@@ -17,7 +17,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     List<Card> mCards;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView mImageView;
+        public ImageView mImage;
         public TextView mCaption;
         public TextView mFirstActionItem;
         public TextView mSecondActionItem;
@@ -27,7 +27,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             super(view);
             CardView cardView = (CardView) view.findViewById(R.id.card_view);
             LinearLayout cardContainer = (LinearLayout) cardView.findViewById(R.id.card_container);
-            mImageView = (ImageView) cardContainer.findViewById(R.id.image);
+            mImage = (ImageView) cardContainer.findViewById(R.id.image);
             mCaption = (TextView) cardContainer.findViewById(R.id.caption);
             mFirstActionItem = (TextView) cardContainer.findViewById(R.id.first_action);
             mSecondActionItem = (TextView) cardContainer.findViewById(R.id.second_action);
@@ -54,7 +54,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Card card = mCards.get(position);
-        holder.mImageView.setImageResource(R.mipmap.toronto);
+        holder.mImage.setImageResource(R.mipmap.toronto);
         holder.mCaption.setText(card.getCaption());
         holder.mFirstActionItem.setText(card.getFirstActionItem());
         holder.mSecondActionItem.setText(card.getSecondActionItem());

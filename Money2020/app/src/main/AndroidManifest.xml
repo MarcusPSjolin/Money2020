@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marcussjolin.money2020" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".Money2020Application"
         android:allowBackup="true"
         android:icon="@mipmap/money_bag"
         android:label="@string/app_name"
@@ -17,6 +20,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="3f8855c91b3050d2be4d981807a975862ea2664a" />
+
+        <activity
+            android:name=".CampaignsActivity"
+            android:label="@string/title_activity_campaigns"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
