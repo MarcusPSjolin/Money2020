@@ -3,7 +3,8 @@ package com.marcussjolin.money2020;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +15,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CampaignsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private CampaignsActivity mActivity;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +33,19 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        mActivity = this;
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new CampaignAdapter(getCampaigns());
+        mRecyclerView.setAdapter(mAdapter);
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(mActivity, CreateCampaignActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -96,5 +115,14 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private List<Campaign> getCampaigns() {
+        ArrayList<Campaign> campaigns = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Campaign campaign = new Campaign(null, "Title", "Description", "Address", (float) 1.0, (float) 1.9);
+            campaigns.add(campaign);
+        }
+        return campaigns;
     }
 }

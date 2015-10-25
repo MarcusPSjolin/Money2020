@@ -3,7 +3,7 @@
     <string name="twitter_consumer_secret">px6gplktWiIwwcaq859tow4ppsixTClgo4yI8jaMLTJQrqufbr</string>
     <string name="nav_drawer_title">Money 20/20 Hackathon</string>
     <string name="nav_drawer_subtitle">Welcome!</string>
-    <string name="app_name">Dody</string>
+    <string name="app_name">Slab</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -16,4 +16,14 @@
     <string name="nav_drawer_social">Social</string>
     <string name="nav_drawer_transaction">Transactions</string>
     <string name="title_activity_campaigns">Campaigns</string>
+    <string name="title_activity_create_campaign">Create a Campaign</string>
+
+    <string name="edit_text_title">Campaign Title</string>
+    <string name="edit_text_description">Description</string>
+    <string name="edit_text_address">Target Street Address</string>
+    <string name="edit_text_city">City</string>
+    <string name="edit_text_state">State</string>
+    <string name="edit_text_daily_budget">Daily Budget ($)</string>
+    <string name="radius">Radius (mi.)</string>
+    <string name="create_campaign">Create Campaign</string>
 </resources>

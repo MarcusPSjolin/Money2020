@@ -5,9 +5,7 @@ import android.media.Image;
 public class Card {
 
     public enum Action {
-        TWEET,
-        FACEBOOK,
-        DELETE
+        TWEET
     }
 
     private Image mImage;
@@ -35,7 +33,6 @@ public class Card {
     public String getFirstActionItem() {
         return mFirstActionItem;
     }
-
 
     public String getSecondActionItem() {
         return mSecondActionItem;
