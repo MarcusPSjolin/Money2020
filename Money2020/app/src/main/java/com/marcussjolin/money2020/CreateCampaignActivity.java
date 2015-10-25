@@ -51,7 +51,8 @@ public class CreateCampaignActivity extends AppCompatActivity {
         });
 
         String title = null;
-        if (getIntent().getExtras().size() > 0) {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.size() > 0) {
             String type = getIntent().getStringExtra(MainActivity.TYPE);
             if (type.equals(MainActivity.NEW_ITEMS)) {
                 title = getIntent().getStringExtra(MainActivity.NAME);
@@ -77,7 +78,8 @@ public class CreateCampaignActivity extends AppCompatActivity {
         EditText dailyBudget = (EditText) findViewById(R.id.daily_budget);
 
         StringBuilder address = new StringBuilder();
-        address.append(streetAddress).append(", ").append(city).append(", ").append(state);
+        address.append(streetAddress.getText().toString()).append(", ").append(city.getText()
+                .toString()).append(", ").append(state.getText().toString());
 
         Campaign campaign = new Campaign(
                 null,

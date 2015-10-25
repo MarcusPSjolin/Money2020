@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +50,8 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new CampaignAdapter(getCampaigns());
-        mRecyclerView.setAdapter(mAdapter);
+
+        getCampaigns();
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +71,12 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_campaigns);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getCampaigns();
     }
 
     @Override
@@ -102,14 +121,6 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
-        } else if (id == R.id.nav_transaction) {
-
-        } else if (id == R.id.nav_employees) {
-
-        } else if (id == R.id.nav_social) {
-
-        } else if (id == R.id.nav_campaigns) {
-            // no-op
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,9 +128,48 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
         return true;
     }
 
-    private List<Campaign> getCampaigns() {
-        ArrayList<Campaign> campaigns = new ArrayList<>();
+    private void getCampaigns() {
+        RequestQueue queue = Volley.newRequestQueue(mActivity);
 
+        Response.ErrorListener listener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mActivity, "Could not retrieve your campaigns at this time.", Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Money2020Application.CAMPAIGNS_URL,
+                new JSONArray(), new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                List<Campaign> campaignList = getCampaignsListFromJson(response);
+                mAdapter = new CampaignAdapter(campaignList);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+        }, listener);
+
+        queue.add(request);
+    }
+
+    private List<Campaign> getCampaignsListFromJson(JSONArray array) {
+        List<Campaign> campaigns = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            try {
+                JSONObject object = array.getJSONObject(i);
+                String title = object.getString(MainActivity.NAME);
+                String desc = object.getString(MainActivity.DESCRIPTION);
+                float dailyBudget = (float) object.getDouble(MainActivity.DAILY_BUDGET);
+                String address = object.getString(MainActivity.TARGET_ADDRESS);
+                float radius = (float) object.getDouble(MainActivity.TARGET_RADIUS);
+                String startDate = object.getString(MainActivity.START_DATE);
+                String endDate = object.getString(MainActivity.END_DATE);
+                String id = object.getString(MainActivity.ID);
+                Campaign campaign = new Campaign(id, null, title, desc, address, dailyBudget, radius);
+                campaigns.add(campaign);
+            } catch (JSONException e) {
+                Log.d("TAG", "JSONException in getCampaignsListFromJson e = " + e);
+            }
+        }
         return campaigns;
     }
 }

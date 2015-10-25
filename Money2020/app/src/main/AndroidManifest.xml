@@ -36,6 +36,11 @@
             android:label="@string/title_activity_create_campaign"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".CampaignDetailsActivity"
+            android:label="@string/title_activity_campaign_details"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

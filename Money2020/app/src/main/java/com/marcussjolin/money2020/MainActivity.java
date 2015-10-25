@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String FACEBOOK_PAGE_ID = "fb_page_id";
     public static final String TARGET_ADDRESS = "target_address";
     public static final String TARGET_RADIUS = "target_radius";
+    public static final String START_DATE = "start_date";
+    public static final String END_DATE = "end_date";
+    public static final String ID = "_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,15 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_overview) {
-            // no-op
-        } else if (id == R.id.nav_transaction) {
-
-        } else if (id == R.id.nav_employees) {
-
-        } else if (id == R.id.nav_social) {
-
-        } else if (id == R.id.nav_campaigns) {
+        if (id == R.id.nav_campaigns) {
             Intent intent = new Intent(this, CampaignsActivity.class);
             startActivity(intent);
             finish();
@@ -205,8 +200,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case Money2020Application.HALLOWEEN:
                 res = ContextCompat.getDrawable(this, R.drawable.pumpkin);
                 break;
-            default:
+            case Money2020Application.MONEY_2020:
                 res = ContextCompat.getDrawable(this, R.drawable.money_2020);
+                break;
+            default:
+                res = ContextCompat.getDrawable(this, R.drawable.brick_and_mortar);
         }
         return res;
     }
@@ -223,8 +221,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case Money2020Application.HALLOWEEN:
                 res = ContextCompat.getDrawable(this, R.drawable.halloween_background);
                 break;
-            default:
+            case Money2020Application.MONEY_2020:
                 res = ContextCompat.getDrawable(this, R.drawable.raining_cash);
+                break;
+            default:
+                res = ContextCompat.getDrawable(this, R.drawable.brick_and_mortar);
         }
         return res;
     }
@@ -237,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             try {
                 DecimalFormat df = new DecimalFormat("#.00");
                 name = array.getJSONObject(i).getString(NAME);
-                price = array.getJSONObject(i).getDouble(PRICE);
+                price = array.getJSONObject(i).getDouble(PRICE) / 100;
                 Card card = new Card(null, name, df.format(price), null, Card.Action.TWEET, NEW_ITEMS);
                 cards.add(card);
             } catch (JSONException e) {

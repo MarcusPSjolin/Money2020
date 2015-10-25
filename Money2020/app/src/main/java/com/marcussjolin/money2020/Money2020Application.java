@@ -14,6 +14,8 @@ public class Money2020Application extends Application {
     public static final String BASE_URL = "http://money2020.paulashbourne.com/";
     public static final String SOCIAL_URL = BASE_URL + "api/social";
     public static final String CAMPAIGNS_URL = BASE_URL + "api/campaigns";
+    public static final String GRAPH_1 = "api/campaigns/";
+    public static final String GRAPH_2 = "/graph";
     public static final String MONEY_2020 = "Money 20/20";
     public static final String NFL = "NFL";
     public static final String BREAST_CANCER = "Breast Cancer Awareness";

@@ -29,4 +29,5 @@
 
     <string name="card_tweet">Tweet</string>
     <string name="card_campaign">Start Campaign</string>
+    <string name="title_activity_campaign_details">Campaign Details</string>
 </resources>

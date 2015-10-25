@@ -22,4 +22,9 @@
     <dimen name="campaign_card_margin">8dp</dimen>
     <!-- Create Campaign -->
     <dimen name="create_campaign_margin_top">16dp</dimen>
+    <!-- Campaign Details -->
+    <dimen name="campaign_details_title_text_size">28sp</dimen>
+    <dimen name="campaign_details_title_margin_tb">16dp</dimen>
+    <dimen name="campaign_details_desc_text_size">18sp</dimen>
+    <dimen name="campaign_details_regular_margin">8dp</dimen>
 </resources>
