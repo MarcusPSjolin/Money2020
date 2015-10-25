@@ -1,22 +1,21 @@
 package com.marcussjolin.money2020;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.List;
 
@@ -68,7 +67,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Card card = mCards.get(position);
+        final Card card = mCards.get(position);
 
         Drawable background = card.getBackground();
         if (background != null) {
@@ -89,5 +88,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.mFirstActionItem.setText(firstAction);
         holder.mSecondActionItem.setText(secondAction);
         holder.mTweetButton.setTag(card.getAction());
+
+        holder.mTweetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TweetComposer.Builder builder = new TweetComposer.Builder(mContext);
+                builder.show();
+            }
+        });
+
+        holder.mCampaignButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CreateCampaignActivity.class);
+                intent.putExtra(MainActivity.TYPE, card.getType());
+                if (card.getType().equals(MainActivity.NEW_ITEMS)) {
+                    intent.putExtra(MainActivity.NAME, card.getCaption());
+                } else {
+                    intent.putExtra(MainActivity.TITLE, card.getCaption());
+                }
+                mContext.startActivity(intent);
+            }
+        });
     }
 }

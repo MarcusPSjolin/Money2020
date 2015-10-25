@@ -119,10 +119,7 @@ public class CampaignsActivity extends AppCompatActivity implements NavigationVi
 
     private List<Campaign> getCampaigns() {
         ArrayList<Campaign> campaigns = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Campaign campaign = new Campaign(null, "Title", "Description", "Address", (float) 1.0, (float) 1.9);
-            campaigns.add(campaign);
-        }
+
         return campaigns;
     }
 }

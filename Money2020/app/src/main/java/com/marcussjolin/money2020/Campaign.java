@@ -4,12 +4,12 @@ import android.media.Image;
 
 public class Campaign {
 
-    Image mImage;
-    String mTitle;
-    String mDescription;
-    String mTargetAddress;
-    float mDailyBudget;
-    float mRadius;
+    private Image mImage;
+    private String mTitle;
+    private String mDescription;
+    private String mTargetAddress;
+    private float mDailyBudget;
+    private float mRadius;
 
     public Campaign(Image image, String title, String description, String targetAddress, float dailyBudget, float radius) {
         this.mImage = image;

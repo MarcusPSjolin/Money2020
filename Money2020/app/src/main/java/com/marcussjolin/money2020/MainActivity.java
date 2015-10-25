@@ -41,15 +41,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private static final String TITLE = "title";
-    private static final String TYPE = "type";
-    private static final String MENTION = "mention";
-    private static final String HASHTAG = "hashtag";
-    private static final String NEW_ITEMS = "new_items";
-    private static final String EVENT = "event";
-    private static final String ITEMS = "items";
-    private static final String NAME = "name";
-    private static final String PRICE = "price";
+    public static final String TITLE = "title";
+    public static final String TYPE = "type";
+    public static final String MENTION = "mention";
+    public static final String HASHTAG = "hashtag";
+    public static final String NEW_ITEMS = "new_items";
+    public static final String EVENT = "event";
+    public static final String ITEMS = "items";
+    public static final String NAME = "name";
+    public static final String PRICE = "price";
+    public static final String DESCRIPTION = "description";
+    public static final String DAILY_BUDGET = "daily_budget";
+    public static final String FACEBOOK_PAGE_ID = "fb_page_id";
+    public static final String TARGET_ADDRESS = "target_address";
+    public static final String TARGET_RADIUS = "target_radius";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
