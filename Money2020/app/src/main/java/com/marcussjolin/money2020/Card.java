@@ -1,6 +1,6 @@
 package com.marcussjolin.money2020;
 
-import android.media.Image;
+import android.graphics.drawable.Drawable;
 
 public class Card {
 
@@ -8,21 +8,24 @@ public class Card {
         TWEET
     }
 
-    private Image mImage;
+    private Drawable mImage;
+    private Drawable mBackground;
+    private String mType;
     private String mCaption;
     private String mFirstActionItem;
     private String mSecondActionItem;
     private Action mAction;
 
-    public Card(Image image, String caption, String firstAction, String secondAction, Action action) {
+    public Card(Drawable image, String caption, String firstAction, String secondAction, Action action, String type) {
         this.mImage = image;
         this.mCaption = caption;
         this.mFirstActionItem = firstAction;
         this.mSecondActionItem = secondAction;
         this.mAction = action;
+        this.mType = type;
     }
 
-    public Image getImage() {
+    public Drawable getImage() {
         return mImage;
     }
 
@@ -40,6 +43,18 @@ public class Card {
 
     public Action getAction() {
         return mAction;
+    }
+
+    public String getType() {
+        return mType;
+    }
+
+    public Drawable getBackground() {
+        return mBackground;
+    }
+
+    public void setBackground(Drawable background) {
+        this.mBackground = background;
     }
 
 }

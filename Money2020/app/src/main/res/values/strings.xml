@@ -26,4 +26,7 @@
     <string name="edit_text_daily_budget">Daily Budget ($)</string>
     <string name="radius">Radius (mi.)</string>
     <string name="create_campaign">Create Campaign</string>
+
+    <string name="card_tweet">Tweet</string>
+    <string name="card_campaign">Start Campaign</string>
 </resources>

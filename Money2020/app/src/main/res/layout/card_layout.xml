@@ -27,7 +27,7 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/card_image_height"
-                android:src="@mipmap/toronto" />
+                android:src="@drawable/brick_and_mortar"/>
 
             <TextView
                 android:id="@+id/caption"
@@ -39,7 +39,8 @@
                 android:layout_marginBottom="@dimen/card_item_margin_tb"
                 android:gravity="center"
                 android:text="Caption"
-                android:textSize="@dimen/card_subtext_size"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/card_text_size"/>
 
             <TextView
                 android:id="@+id/first_action"
@@ -47,10 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/card_item_margin_lr"
                 android:layout_marginRight="@dimen/card_item_margin_lr"
-                android:layout_marginBottom="@dimen/card_item_margin_tb"
+                android:layout_marginBottom="@dimen/card_item_button_margin_lr"
                 android:text="First Action"
-                android:textSize="@dimen/card_subtext_size"
-                android:textColor="@color/black"/>
+                android:textSize="@dimen/card_subtext_size" />
 
             <TextView
                 android:id="@+id/second_action"
@@ -60,23 +60,43 @@
                 android:layout_marginRight="@dimen/card_item_margin_lr"
                 android:layout_marginBottom="@dimen/card_item_margin_tb"
                 android:text="Second Action"
-                android:textSize="@dimen/card_subtext_size"
-                android:textColor="@color/black"/>
+                android:textSize="@dimen/card_subtext_size" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/action_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_button_margin_tb"
-            android:layout_marginBottom="@dimen/card_button_margin_tb"
-            android:layout_marginLeft="@dimen/card_item_margin_lr"
-            android:layout_marginRight="@dimen/card_item_margin_lr"
             android:layout_gravity="bottom"
-            android:background="@drawable/button_ripple"
-            android:textColor="@color/white"
-            android:text="Action Button"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tweet_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/card_button_margin_tb"
+                android:layout_marginBottom="@dimen/card_button_margin_tb"
+                android:layout_marginLeft="@dimen/card_item_margin_lr"
+                android:layout_marginRight="@dimen/card_item_button_margin_lr"
+                android:background="@drawable/button_ripple"
+                android:textColor="@color/white"
+                android:text="@string/card_tweet"/>
+
+            <Button
+                android:id="@+id/campaign_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/card_button_margin_tb"
+                android:layout_marginBottom="@dimen/card_button_margin_tb"
+                android:layout_marginLeft="@dimen/card_item_button_margin_lr"
+                android:layout_marginRight="@dimen/card_item_margin_lr"
+                android:background="@drawable/button_ripple"
+                android:textColor="@color/white"
+                android:text="@string/card_campaign"/>
+
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 </LinearLayout>
